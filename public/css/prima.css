@@ -434,3 +434,80 @@
     .rp-grid.two, .rp-grid.four, .rp-features { grid-template-columns: 1fr; }
     .rp-cta { padding: 24px 20px; }
 }
+
+/* Kenapa perlu Ruci PRIMA */
+.rp .rp-sub { margin: -12px 0 20px; color: #6b7a87; font-size: .92rem; }
+.rp-signs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.rp-signs li { position: relative; padding: 12px 14px 12px 40px; background: #fff; border: 1px solid #ebe6dc; border-radius: 10px; font-size: .9rem; line-height: 1.5; color: #2c3e4f; }
+.rp-signs li::before { content: ""; position: absolute; left: 14px; top: 15px; width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid #9a7531; }
+.dark .rp-signs li { background: #ffffff08; border-color: #ffffff1a; color: #cdd8e2; }
+.rp-ps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.rp-ps article { min-width: 0; background: #fff; border: 1px solid #ebe6dc; border-radius: 12px; padding: 20px; }
+.dark .rp-ps article { background: #ffffff08; border-color: #ffffff1a; }
+.rp-ps dl { margin: 0; display: grid; gap: 12px; }
+.rp-ps dl > div { padding-left: 12px; border-left: 3px solid #e3ddd0; }
+.rp-ps .problem { border-left-color: #d9826b; }
+.rp-ps .solution { border-left-color: var(--rac-navy); }
+.rp-ps .result { border-left-color: #4f9a5a; }
+.dark .rp-ps .solution { border-left-color: #7fb0d6; }
+.rp-ps dt { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8a96a1; margin-bottom: 2px; }
+.rp-ps dd { margin: 0; font-size: .87rem; line-height: 1.55; color: #4f6273; }
+.dark .rp-ps dd { color: #9fb0bf; }
+.rp-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: none; }
+.rp-flow li { min-width: 0; padding: 20px; background: #fff; border: 1px solid #ebe6dc; border-radius: 12px; }
+.dark .rp-flow li { background: #ffffff08; border-color: #ffffff1a; }
+.rp-flow span { display: grid; place-items: center; width: 32px; height: 32px; margin-bottom: 12px; border-radius: 50%; background: var(--rac-navy); color: #fff; font-weight: 700; font-size: .9rem; }
+.rp-flow b { display: block; margin-bottom: 6px; color: var(--rac-navy); }
+.dark .rp-flow b { color: #e6edf3; }
+.rp-flow p { font-size: .87rem; line-height: 1.55; color: #4f6273; }
+.dark .rp-flow p { color: #9fb0bf; }
+
+/* Panduan penggunaan per peran: gambar layar mengikuti lebar layar, tanpa scroll horizontal. */
+.rp-guide .rp-hero { padding-bottom: 24px; }
+.rp-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.rp-tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid #e3ddd0; background: #fff; color: #2c3e4f; font-size: .87rem; font-weight: 600; text-decoration: none; }
+.rp-tabs a:hover { border-color: #c9b98f; }
+.rp-tabs a.active { background: var(--rac-navy); border-color: var(--rac-navy); color: #fff; }
+.rp-tabs small { font-size: .66rem; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: #f3ede0; color: #9a7531; }
+.rp-tabs a.active small { background: var(--rac-gold); color: #1b1408; }
+.dark .rp-tabs a { background: #ffffff08; border-color: #ffffff1f; color: #cdd8e2; }
+.dark .rp-tabs a.active { background: #e6edf3; color: #0b1520; }
+.rp-guide-who { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; margin-bottom: 32px; padding: 20px; border-radius: 12px; background: #fbf7ee; border: 1px solid #ebe1c8; }
+.dark .rp-guide-who { background: #c9963e12; border-color: #c9963e33; }
+.rp-guide-who b { display: block; margin-bottom: 6px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: #9a7531; }
+.rp-guide-who p, .rp-guide-who ul { margin: 0; font-size: .9rem; line-height: 1.55; color: #2c3e4f; }
+.rp-guide-who ul { padding-left: 18px; display: grid; gap: 4px; }
+.dark .rp-guide-who p, .dark .rp-guide-who ul { color: #cdd8e2; }
+.rp-guide-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+.rp-guide-steps > li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 28px; align-items: start; padding: 24px; background: #fff; border: 1px solid #ebe6dc; border-radius: 14px; scroll-margin-top: 80px; }
+.dark .rp-guide-steps > li { background: #ffffff08; border-color: #ffffff1a; }
+.rp-guide-text { min-width: 0; }
+.rp-guide-num { display: inline-block; margin-bottom: 8px; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #9a7531; }
+.rp-guide-text h3 { margin-bottom: 6px !important; font-size: 1.15rem !important; }
+.rp-guide-menu { margin-bottom: 12px !important; font-size: .8rem; color: #8a96a1; overflow-wrap: anywhere; }
+.rp-guide-text > p:not(.rp-guide-menu) { font-size: .92rem; line-height: 1.65; color: #4f6273; }
+.dark .rp-guide-text > p:not(.rp-guide-menu) { color: #9fb0bf; }
+.rp-guide-tips { margin: 12px 0 0; padding: 10px 12px 10px 30px; border-radius: 8px; background: #f5f7fa; font-size: .85rem; line-height: 1.5; color: #4f6273; }
+.dark .rp-guide-tips { background: #ffffff0a; color: #9fb0bf; }
+.rp-shot { margin: 0; min-width: 0; }
+.rp-shot-frame { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 10px; border: 1px solid #e3e8ec; background: repeating-linear-gradient(135deg, #f5f7fa 0 12px, #eef2f5 12px 24px); box-shadow: 0 8px 24px -12px #0b3a5c40; }
+.dark .rp-shot-frame { border-color: #ffffff1f; background: repeating-linear-gradient(135deg, #ffffff06 0 12px, #ffffff0c 12px 24px); }
+.rp-shot.mobile { max-width: 260px; justify-self: center; }
+.rp-shot.mobile .rp-shot-frame { aspect-ratio: 390 / 844; border-radius: 22px; border-width: 6px; border-color: #1f2d3a; }
+.rp-shot-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; font-size: .8rem; color: #8a96a1; }
+.rp-shot-placeholder svg { width: 32px; height: 32px; }
+.rp-shot-frame a { position: absolute; inset: 0; display: block; cursor: zoom-in; }
+.rp-shot-frame img { display: block; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: top left; }
+.rp-shot figcaption { margin-top: 8px; font-size: .74rem; color: #8a96a1; text-align: center; overflow-wrap: anywhere; }
+
+@media (max-width: 1100px) {
+    .rp-ps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rp-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rp-guide-steps > li { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 640px) {
+    .rp-signs, .rp-ps, .rp-flow, .rp-guide-who { grid-template-columns: minmax(0, 1fr); }
+    .rp-guide-steps > li { padding: 16px; }
+    .rp-tabs a { padding: 7px 12px; font-size: .82rem; }
+}
+.rp-guide-who ul, .rp-role ul, .rp-sector ul, .rp-guide-tips { list-style: disc; }

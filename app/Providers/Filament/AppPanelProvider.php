@@ -8,7 +8,9 @@ use App\Filament\Auth\Login;
 use App\Filament\App\Pages\DasborEksekutif;
 use App\Filament\App\Pages\DasborPimpinan;
 use App\Filament\App\Pages\FiturUtama;
+use App\Filament\App\Pages\KenapaPerluPrima;
 use App\Filament\App\Pages\MengapaPrima;
+use App\Filament\App\Pages\PanduanPenggunaan;
 use App\Http\Middleware\SetCurrentCompany;
 use App\Models\Company;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
@@ -59,6 +61,7 @@ class AppPanelProvider extends PanelProvider
             )
             ->navigationGroups([
                 NavigationGroup::make('Pimpinan'),
+                NavigationGroup::make('Panduan & Informasi'),
                 NavigationGroup::make('Layanan Umum'),
                 NavigationGroup::make('ATK & Persediaan'),
                 NavigationGroup::make('Legal & Dokumen'),
@@ -70,7 +73,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\Filament\App\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\Filament\App\Pages')
-            ->pages([DasborBagianUmum::class, DasborEksekutif::class, DasborPimpinan::class, MengapaPrima::class, FiturUtama::class])
+            ->pages([DasborBagianUmum::class, DasborEksekutif::class, DasborPimpinan::class, MengapaPrima::class, FiturUtama::class, KenapaPerluPrima::class, PanduanPenggunaan::class])
             ->widgets([])
             ->databaseNotifications()
             ->sidebarCollapsibleOnDesktop()

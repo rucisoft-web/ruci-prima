@@ -63,4 +63,20 @@ class GuestAccessTest extends TestCase
 
         $this->get('/app/sahid/dasbor-pimpinan')->assertOk()->assertDontSee('Mode tamu');
     }
+
+    public function test_usage_guide_defaults_to_the_users_role_and_shows_screenshots(): void
+    {
+        $this->seed(DemoSeeder::class);
+        app(CurrentCompany::class)->set(null);
+
+        foreach (['manajer@sahid.demo' => 'Manajer / Kepala Bagian Umum', 'teknisi@sahid.demo' => 'Staf Teknik / Teknisi', 'umum@sahid.demo' => 'Staf Bagian Umum', 'direktur@sahid.demo' => 'Direksi &amp; Komisaris'] as $email => $title) {
+            $this->flushSession();
+            $this->app['auth']->forgetGuards();
+            $this->actingAs(User::where('email', $email)->first());
+            $this->get('/app/sahid/panduan-penggunaan')->assertOk()->assertSee('<h1>'.$title.'</h1>', false)->assertSee('img/panduan/', false);
+        }
+
+        $this->get('/app/sahid/panduan-penggunaan?peran=tamu')->assertOk()->assertSee('Masuk sebagai Tamu')->assertSee('rp-shot-placeholder', false);
+        $this->get('/app/sahid/kenapa-perlu-ruci-prima')->assertOk()->assertSee('Masalah dan solusinya')->assertSee('Solusi Ruci PRIMA');
+    }
 }

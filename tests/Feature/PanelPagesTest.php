@@ -37,7 +37,7 @@ class PanelPagesTest extends TestCase
             '', '/assets', '/assets/'.$ids(Asset::class), '/inspections', '/maintenance-requests',
             '/maintenance-requests/'.$ids(MaintenanceRequest::class), '/work-orders', '/work-orders/'.$ids(WorkOrder::class),
             '/preventive-plans', '/asset-risks', '/capex-proposals', '/asset-surveys', '/asset-surveys/'.$ids(\App\Models\AssetSurvey::class), '/verifikasi-aset',
-            '/dasbor-aset', '/dasbor-pimpinan', '/mengapa-ruci-prima', '/fitur-utama', '/jadwal-ruang-rapat', '/jadwal-ruang-rapat?minggu=2020-01-01', '/room-bookings', '/vehicle-bookings', '/vehicles',
+            '/dasbor-aset', '/dasbor-pimpinan', '/mengapa-ruci-prima', '/fitur-utama', '/kenapa-perlu-ruci-prima', '/panduan-penggunaan', '/panduan-penggunaan?peran=teknisi', '/jadwal-ruang-rapat', '/jadwal-ruang-rapat?minggu=2020-01-01', '/room-bookings', '/vehicle-bookings', '/vehicles',
             '/vehicles/'.$ids(\App\Models\Vehicle::class), '/supply-requests', '/supply-requests/'.$ids(\App\Models\SupplyRequest::class),
             '/supply-items', '/stock-movements', '/legal-documents',
         ];

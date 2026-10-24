@@ -41,7 +41,8 @@ Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_ca
 ### Mode tamu & halaman fitur
 
 - Tombol **Masuk sebagai Tamu** di halaman masuk (bila data contoh terpasang); bawaan PT Hotel Sahid Jaya, perusahaan lain dipilih dari kartu di form atau pita di atas layar. Rute: `/tamu?perusahaan=sahid|bluebird|diamond`. Tamu = peran Eksekutif (hanya baca).
-- Halaman **Fitur Utama** publik di `/fitur` dan sub menu **Pimpinan › Fitur Utama**.
+- Halaman **Fitur Utama** publik di `/fitur`; di dalam aplikasi, menu **Panduan & Informasi** berisi Kenapa Perlu Ruci PRIMA (masalah → solusi), Panduan Penggunaan per peran (dengan gambar layar), dan Fitur Utama.
+- Gambar layar panduan ada di `public/img/panduan/*.webp`; bila sebuah berkas tidak ada, halaman menampilkan placeholder. Untuk membuat ulang: `node scripts/panduan-shots.cjs <url> <id-kendaraan> <id-work-order> <token-qr>` (perlu Playwright dan data contoh), lalu konversi PNG ke WebP.
 
 ### Peran (per perusahaan)
 

@@ -12,11 +12,11 @@ class FiturUtama extends Page
 {
     protected static ?string $slug = 'fitur-utama';
 
-    protected static ?int $navigationSort = -18;
+    protected static ?int $navigationSort = 3;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSparkles;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Pimpinan';
+    protected static string|UnitEnum|null $navigationGroup = 'Panduan & Informasi';
 
     protected static ?string $navigationLabel = 'Fitur Utama';
 
