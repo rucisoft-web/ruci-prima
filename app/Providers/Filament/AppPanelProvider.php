@@ -3,8 +3,11 @@
 namespace App\Providers\Filament;
 
 use App\Filament\App\Pages\DasborBagianUmum;
+use App\Filament\Auth\EditProfile;
+use App\Filament\Auth\Login;
 use App\Filament\App\Pages\DasborEksekutif;
 use App\Filament\App\Pages\DasborPimpinan;
+use App\Filament\App\Pages\FiturUtama;
 use App\Filament\App\Pages\MengapaPrima;
 use App\Http\Middleware\SetCurrentCompany;
 use App\Models\Company;
@@ -34,9 +37,9 @@ class AppPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('app')
-            ->login()
+            ->login(Login::class)
             ->passwordReset()
-            ->profile()
+            ->profile(EditProfile::class)
             ->brandName('Ruci PRIMA')
             ->favicon(asset('favicon.svg'))
             ->colors([
@@ -67,11 +70,13 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\Filament\App\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\Filament\App\Pages')
-            ->pages([DasborBagianUmum::class, DasborEksekutif::class, DasborPimpinan::class, MengapaPrima::class])
+            ->pages([DasborBagianUmum::class, DasborEksekutif::class, DasborPimpinan::class, MengapaPrima::class, FiturUtama::class])
             ->widgets([])
             ->databaseNotifications()
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth('full')
+            ->renderHook(PanelsRenderHook::BODY_START, fn () => auth()->user()?->isGuest() && filament()->getTenant() ? view('filament.partials.guest-bar') : '')
+            ->renderHook(PanelsRenderHook::AUTH_LOGIN_FORM_AFTER, fn () => view('filament.auth.login-extra'))
             ->renderHook(PanelsRenderHook::SIMPLE_LAYOUT_START, fn () => auth()->guest() ? view('filament.auth.hero') : '')
             ->renderHook(PanelsRenderHook::HEAD_END, fn () => new HtmlString('<link rel="stylesheet" href="'.asset('css/prima.css').'?v='.@filemtime(public_path('css/prima.css')).'">'))
             ->middleware([

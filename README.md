@@ -38,6 +38,11 @@ Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_ca
 | Jejak Audit | Siapa mengubah apa (nilai lama → baru untuk kolom penting), pengganti chatter Odoo |
 | Admin Platform (`/platform`) | Perusahaan, akun, akses per perusahaan, reset MFA |
 
+### Mode tamu & halaman fitur
+
+- Tombol **Masuk sebagai Tamu** di halaman masuk (bila data contoh terpasang); bawaan PT Hotel Sahid Jaya, perusahaan lain dipilih dari kartu di form atau pita di atas layar. Rute: `/tamu?perusahaan=sahid|bluebird|diamond`. Tamu = peran Eksekutif (hanya baca).
+- Halaman **Fitur Utama** publik di `/fitur` dan sub menu **Pimpinan › Fitur Utama**.
+
 ### Peran (per perusahaan)
 
 | Peran | Setara Odoo | Hak |

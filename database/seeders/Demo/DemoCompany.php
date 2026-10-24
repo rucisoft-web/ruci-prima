@@ -147,6 +147,10 @@ abstract class DemoCompany extends Seeder
 
         $group = User::updateOrCreate(['email' => self::GROUP_EXECUTIVE], ['name' => 'Pimpinan Grup (Demo)', 'password' => $password, 'is_active' => true]);
         $group->memberships()->updateOrCreate(['company_id' => $this->company->id], ['role' => Role::Eksekutif, 'position_title' => 'Komisaris / Pimpinan', 'is_active' => true]);
+
+        // Tamu masuk tanpa kata sandi lewat tombol di halaman login; sandi acak hanya agar tidak bisa ditebak.
+        $guest = User::firstOrCreate(['email' => User::GUEST_EMAIL], ['name' => 'Tamu', 'password' => str()->password(40), 'is_active' => true]);
+        $guest->memberships()->updateOrCreate(['company_id' => $this->company->id], ['role' => Role::Eksekutif, 'position_title' => 'Tamu (hanya baca)', 'is_active' => true]);
     }
 
     protected function masterData(): void

@@ -178,6 +178,10 @@ Akun per perusahaan memakai domain `sahid.demo`, `bluebird.demo`, atau `diamond.
 
 Akun `pimpinan@prima.demo` dapat berpindah di antara ketiga perusahaan lewat pemilih perusahaan di kiri atas; cocok untuk memperagakan **Dasbor Pimpinan** dan halaman **Mengapa Ruci PRIMA**. Admin platform (`ASSET_ADMIN_EMAIL`) juga otomatis menjadi manajer di ketiganya.
 
+**Mode tamu.** Selama data contoh terpasang, halaman masuk menampilkan tombol **Masuk sebagai Tamu** dengan pilihan perusahaan (bawaan: PT Hotel Sahid Jaya). Tamu masuk tanpa kata sandi (akun `tamu@prima.demo`, peran Eksekutif, hanya baca, profil tidak dapat diubah) dan dapat berpindah perusahaan lewat pita di atas layar. Alamat langsung: `/tamu`, `/tamu?perusahaan=bluebird`, `/tamu?perusahaan=diamond`. Akun tamu ikut terhapus oleh `php artisan prima:remove-demo`, sehingga tombolnya hilang di instalasi produksi.
+
+**Halaman Fitur Utama.** Penjelasan fitur untuk komisaris, direksi, dan kepala bagian umum (BUMN maupun swasta) tersedia publik di `/fitur` (ditautkan dari halaman masuk) dan di dalam aplikasi pada menu **Pimpinan › Fitur Utama**.
+
 Kata sandi semua akun: nilai `ASSET_DEMO_PASSWORD` (bawaan `Demo#2026aset`). Hapus seluruh perusahaan contoh kapan saja dengan `php artisan prima:remove-demo`. Instalasi yang masih berisi data contoh lama (GPCH) cukup menjalankan `php artisan prima:remove-demo` lalu `php artisan prima:demo`.
 
 ## 8. Memperbarui program

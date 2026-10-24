@@ -28,8 +28,28 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
 
     protected $hidden = ['password', 'remember_token', 'app_authentication_secret', 'app_authentication_recovery_codes'];
 
+    /** Akun tamu bersama untuk mencoba data contoh; masuk lewat tombol di halaman login, hanya baca. */
+    public const GUEST_EMAIL = 'tamu@prima.demo';
+
     /** @var array<int, Membership|null> */
     protected array $membershipCache = [];
+
+    protected static function booted(): void
+    {
+        // Akun tamu dipakai banyak pengunjung sekaligus: tamu tidak boleh mengubah profil, sandi, atau MFA-nya sendiri.
+        static::updating(fn (User $user) => ! ($user->getOriginal('email') === self::GUEST_EMAIL && auth()->id() === $user->id));
+    }
+
+    public function isGuest(): bool
+    {
+        return $this->email === self::GUEST_EMAIL;
+    }
+
+    /** Akun tamu siap dipakai bila data contoh terpasang. */
+    public static function guestAccount(): ?self
+    {
+        return static::query()->where('email', self::GUEST_EMAIL)->where('is_active', true)->first();
+    }
 
     protected function casts(): array
     {
