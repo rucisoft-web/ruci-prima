@@ -31,7 +31,7 @@ class CompanyResource extends Resource
     {
         return $schema->components([
             TextInput::make('name')->label('Nama')->required()->maxLength(255),
-            TextInput::make('code')->label('Kode singkat')->maxLength(20)->helperText('Dipakai untuk alamat, mis. /app/gpch'),
+            TextInput::make('code')->label('Kode singkat')->maxLength(20)->helperText('Dipakai untuk alamat, mis. /app/sahid'),
             TextInput::make('slug')->label('Slug alamat')->maxLength(60)->alphaDash()->unique(ignoreRecord: true)->visibleOn('edit'),
             TextInput::make('industry')->label('Industri')->placeholder('Perhotelan, rumah sakit, manufaktur, kampus...'),
             TextInput::make('city')->label('Kota'),

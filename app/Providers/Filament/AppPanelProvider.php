@@ -4,6 +4,8 @@ namespace App\Providers\Filament;
 
 use App\Filament\App\Pages\DasborBagianUmum;
 use App\Filament\App\Pages\DasborEksekutif;
+use App\Filament\App\Pages\DasborPimpinan;
+use App\Filament\App\Pages\MengapaPrima;
 use App\Http\Middleware\SetCurrentCompany;
 use App\Models\Company;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
@@ -53,6 +55,7 @@ class AppPanelProvider extends PanelProvider
                 isRequired: fn () => (bool) config('asset.mfa_required'),
             )
             ->navigationGroups([
+                NavigationGroup::make('Pimpinan'),
                 NavigationGroup::make('Layanan Umum'),
                 NavigationGroup::make('ATK & Persediaan'),
                 NavigationGroup::make('Legal & Dokumen'),
@@ -64,7 +67,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\Filament\App\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\Filament\App\Pages')
-            ->pages([DasborBagianUmum::class, DasborEksekutif::class])
+            ->pages([DasborBagianUmum::class, DasborEksekutif::class, DasborPimpinan::class, MengapaPrima::class])
             ->widgets([])
             ->databaseNotifications()
             ->sidebarCollapsibleOnDesktop()

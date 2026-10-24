@@ -5,6 +5,7 @@ use App\Models\Company;
 use App\Models\PreventivePlan;
 use App\Models\User;
 use App\Support\CurrentCompany;
+use Database\Seeders\Demo\DemoCompany;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -32,38 +33,42 @@ Artisan::command('prima:create-admin {email} {name} {--password=}', function (st
 
 Artisan::command('prima:demo', function () {
     $this->call('db:seed', ['--class' => 'Database\\Seeders\\DemoSeeder', '--force' => true]);
-    $this->call('db:seed', ['--class' => 'Database\\Seeders\\GeneralAffairsDemoSeeder', '--force' => true]);
-    $this->info('Data contoh siap di /app/gpch. Akun: manajer@gpch.demo, teknisi@gpch.demo, supervisor@gpch.demo, umum@gpch.demo, gm@gpch.demo (sandi: ASSET_DEMO_PASSWORD).');
-})->purpose('Muat data contoh Grand Pasundan Convention Hotel');
+    $this->info('Data contoh siap: /app/sahid, /app/bluebird, /app/diamond.');
+    $this->line('Akun per perusahaan: direktur@, manajer@, teknisi@, supervisor@, umum@ dengan domain sahid.demo, bluebird.demo, diamond.demo.');
+    $this->line('Akun lintas perusahaan: '.DemoCompany::GROUP_EXECUTIVE.'. Sandi semua akun: ASSET_DEMO_PASSWORD.');
+})->purpose('Muat data contoh Hotel Sahid, Blue Bird, dan Diamond Food');
 
 Artisan::command('prima:remove-demo', function () {
-    $company = Company::where('slug', 'gpch')->where('is_demo', true)->first();
+    $companies = Company::where('is_demo', true)->get();
 
-    if (! $company || ! $this->confirm("Hapus perusahaan contoh {$company->name} beserta seluruh datanya?")) {
+    if ($companies->isEmpty() || ! $this->confirm('Hapus perusahaan contoh ('.$companies->pluck('name')->join(', ').') beserta seluruh datanya?')) {
         return 0;
     }
 
-    DB::transaction(function () use ($company) {
-        $userIds = $company->memberships()->withoutGlobalScopes()->pluck('user_id');
-        $id = $company->id;
+    DB::transaction(function () use ($companies) {
+        foreach ($companies as $company) {
+            $id = $company->id;
 
-        // Urutan anak → induk karena kategori dan lokasi dilindungi ON DELETE RESTRICT.
-        DB::table('maintenance_requests')->where('company_id', $id)->update(['work_order_id' => null]);
-        foreach (['legal_documents', 'stock_movements', 'supply_requests', 'supply_items', 'vehicle_bookings', 'vehicle_fuel_logs', 'vehicle_services', 'vehicles', 'room_bookings', 'meeting_rooms'] as $table) {
-            DB::table($table)->where('company_id', $id)->delete();
-        }
-        foreach (['capex_proposals', 'asset_risks', 'work_orders', 'preventive_plans', 'maintenance_requests', 'inspections', 'assets'] as $table) {
-            DB::table($table)->where('company_id', $id)->delete();
-        }
-        DB::table('asset_template_lines')->whereIn('asset_template_id', DB::table('asset_templates')->where('company_id', $id)->pluck('id'))->delete();
-        DB::table('locations')->where('company_id', $id)->update(['parent_id' => null]);
+            // Urutan anak → induk karena kategori dan lokasi dilindungi ON DELETE RESTRICT.
+            DB::table('maintenance_requests')->where('company_id', $id)->update(['work_order_id' => null]);
+            foreach (['legal_documents', 'stock_movements', 'supply_requests', 'supply_items', 'vehicle_bookings', 'vehicle_fuel_logs', 'vehicle_services', 'vehicles', 'room_bookings', 'meeting_rooms'] as $table) {
+                DB::table($table)->where('company_id', $id)->delete();
+            }
+            foreach (['capex_proposals', 'asset_risks', 'work_orders', 'preventive_plans', 'maintenance_requests', 'inspections', 'assets'] as $table) {
+                DB::table($table)->where('company_id', $id)->delete();
+            }
+            DB::table('asset_template_lines')->whereIn('asset_template_id', DB::table('asset_templates')->where('company_id', $id)->pluck('id'))->delete();
+            DB::table('locations')->where('company_id', $id)->update(['parent_id' => null]);
 
-        $company->delete();
-        User::whereIn('id', $userIds)->where('email', 'like', '%@gpch.demo')->delete();
+            $company->delete();
+        }
+
+        // Akun contoh yang tidak lagi punya perusahaan ikut dihapus.
+        User::where('email', 'like', '%.demo')->whereDoesntHave('memberships')->where('is_platform_admin', false)->delete();
     });
 
     $this->info('Data contoh dihapus.');
-})->purpose('Hapus data contoh GPCH');
+})->purpose('Hapus seluruh perusahaan contoh');
 
 Artisan::command('prima:doctor', function () {
     $checks = [

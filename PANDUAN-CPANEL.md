@@ -97,7 +97,7 @@ ASSET_MFA_REQUIRED=false
 ASSET_ADMIN_EMAIL=admin@domainanda.com
 ASSET_ADMIN_PASSWORD="SandiSementara#2026"
 
-# Data contoh Grand Pasundan Convention Hotel. false untuk pemakaian sungguhan.
+# Data contoh Hotel Sahid, Blue Bird, dan Diamond Food. false untuk pemakaian sungguhan.
 ASSET_DEMO=false
 ```
 
@@ -155,24 +155,30 @@ Aplikasi ini **tidak membutuhkan cron permanen**: skor, PM terlambat, dan dasbor
 
 ### Situs demo / promosi
 
-Isi `ASSET_DEMO=true` (opsional `ASSET_DEMO_PASSWORD`) lalu jalankan `php artisan prima:demo` dan `php artisan optimize`. Data contoh **Grand Pasundan Convention Hotel** (fiktif, berbasis modul Odoo GPCH Asset Care) dibuat di `/app/gpch`:
+Isi `ASSET_DEMO=true` (opsional `ASSET_DEMO_PASSWORD`) lalu jalankan `php artisan prima:demo` dan `php artisan optimize`. Tiga perusahaan contoh dibuat. Profil umumnya (nama, alamat, lini usaha, lokasi seperti pool, pabrik, dan cabang) mengacu pada laporan tahunan 2025 masing-masing; seluruh angka operasional, nama orang, dan nomor dokumen adalah **ilustrasi untuk demo**.
 
-- 297 aset: 30 kamar dan 3 ruang rapat dari templat, plus 36 aset utama (chiller, genset, lift, eskalator, STP, dapur, laundry, AV, TI).
-- Survei aset awal yang sedang berjalan (terverifikasi, tidak ditemukan, aset tambahan, belum diperiksa).
-- 12 bulan riwayat work order preventif/korektif/darurat beserta biaya, 70 inspeksi, 36 permintaan (sebagian dari pindai QR), 36 rencana PM (sebagian terlambat), 15 risiko, dan 8 usulan CAPEX.
-- Bagian umum: 4 ruang rapat dengan sekitar 100 pemesanan, 5 kendaraan dinas (sebagian pajak/servis jatuh tempo) dengan pemesanan, log BBM 6 bulan, dan riwayat servis, 22 barang persediaan dengan 3 bulan mutasi stok (4 di antaranya menipis), 7 permintaan barang, dan 15 dokumen perizinan/kontrak (sebagian segera berakhir).
+| Perusahaan | Alamat | Isi khas |
+|---|---|---|
+| PT Hotel Sahid Jaya International Tbk | `/app/sahid` | Kamar Nakula/Sadewa, Puri Agung Convention Center, ruang Candi, chiller, lift, CAPEX renovasi kamar dan rooftop |
+| PT Blue Bird Tbk | `/app/bluebird` | Enam pool (Halim, Ciputat, Perigi, Warung Buncit, Jimbaran, Semarang), SPKLU, bengkel, batch armada listrik, command center |
+| PT Diamond Food Indonesia Tbk | `/app/diamond` | Pabrik MM2100 dan Cimahi, lini UHT dan es krim, kompresor amonia, cabang rantai dingin, proyek gudang Irian 3 |
 
-Instalasi yang sudah berisi data contoh lama cukup menjalankan `php artisan migrate --force` lalu `php artisan prima:demo`; data aset tidak diubah, hanya data bagian umum yang ditambahkan.
+Setiap perusahaan berisi survei aset yang sedang berjalan, 12 bulan riwayat work order beserta biaya, inspeksi, permintaan dari pindai QR, rencana PM (sebagian terlambat), register risiko, usulan CAPEX, ruang rapat dengan pemesanan 6 minggu, kendaraan dinas dengan log BBM 12 bulan dan riwayat servis, persediaan dengan mutasi 6 bulan (sebagian menipis), permintaan barang, serta izin dan dokumen (sebagian segera berakhir atau kedaluwarsa).
 
-| Peran | Email |
+Akun per perusahaan memakai domain `sahid.demo`, `bluebird.demo`, atau `diamond.demo`:
+
+| Peran | Email (contoh untuk Hotel Sahid) |
 |---|---|
-| Manajer (Chief Engineer) | manajer@gpch.demo |
-| Staf (Teknisi) | teknisi@gpch.demo |
-| Staf (General Affairs) | umum@gpch.demo |
-| Staf (Supervisor Housekeeping) | supervisor@gpch.demo |
-| Eksekutif (General Manager) | gm@gpch.demo |
+| Eksekutif (Direktur) | direktur@sahid.demo |
+| Manajer | manajer@sahid.demo |
+| Staf (Teknisi) | teknisi@sahid.demo |
+| Staf (Supervisor) | supervisor@sahid.demo |
+| Staf (General Affairs) | umum@sahid.demo |
+| Eksekutif lintas perusahaan (komisaris/pimpinan grup) | pimpinan@prima.demo |
 
-Kata sandi semua akun: nilai `ASSET_DEMO_PASSWORD` (bawaan `Demo#2026aset`). Hapus data contoh kapan saja dengan `php artisan prima:remove-demo`.
+Akun `pimpinan@prima.demo` dapat berpindah di antara ketiga perusahaan lewat pemilih perusahaan di kiri atas; cocok untuk memperagakan **Dasbor Pimpinan** dan halaman **Mengapa Ruci PRIMA**. Admin platform (`ASSET_ADMIN_EMAIL`) juga otomatis menjadi manajer di ketiganya.
+
+Kata sandi semua akun: nilai `ASSET_DEMO_PASSWORD` (bawaan `Demo#2026aset`). Hapus seluruh perusahaan contoh kapan saja dengan `php artisan prima:remove-demo`. Instalasi yang masih berisi data contoh lama (GPCH) cukup menjalankan `php artisan prima:remove-demo` lalu `php artisan prima:demo`.
 
 ## 8. Memperbarui program
 

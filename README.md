@@ -4,7 +4,7 @@
 
 Aplikasi bagian umum (general affairs) untuk hotel, rumah sakit, kampus, gedung kantor, atau pabrik: ruang rapat, kendaraan dinas, ATK & persediaan, dokumen dan perizinan, sekaligus manajemen aset dan intelijen aset eksekutif. Satu instalasi melayani banyak perusahaan/properti dengan data yang terpisah.
 
-Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_care` 18.0.1.3.0, untuk Grand Pasundan Convention Hotel) menjadi produk umum. Rumus skor, alur kerja, dan dasbor eksekutif dipertahankan; hal yang di Odoo khusus hotel (daftar departemen, label "Guest") dijadikan data per perusahaan. Data contoh GPCH disertakan.
+Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_care` 18.0.1.3.0, untuk Grand Pasundan Convention Hotel) menjadi produk umum. Rumus skor, alur kerja, dan dasbor eksekutif dipertahankan; hal yang di Odoo khusus hotel (daftar departemen, label "Guest") dijadikan data per perusahaan. Data contoh tiga perusahaan (Hotel Sahid, Blue Bird, Diamond Food) disertakan; profil mengacu pada laporan tahunan 2025, angka operasionalnya ilustrasi.
 
 ## Teknologi
 
@@ -18,6 +18,8 @@ Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_ca
 
 | Area | Isi |
 |---|---|
+| Dasbor Pimpinan | Indeks Kesiapan Operasional, 8 KPI lintas modul, daftar keputusan yang menunggu (izin kedaluwarsa, risiko kritis, CAPEX), catatan otomatis, dan 8 grafik interaktif: biaya operasional 12 bulan, porsi pekerjaan reaktif, nilai aset per kondisi, CAPEX per kategori, aset melewati umur ekonomis, status izin, utilisasi ruang, biaya kendaraan per km. |
+| Mengapa Ruci PRIMA | Penjelasan manfaat untuk direksi, komisaris, dan pimpinan, memakai angka perusahaan yang sedang dibuka dan contoh sesuai industrinya. |
 | Dasbor Aset | Asset Care Index, 8 KPI, kesehatan per departemen, distribusi kondisi, tren 12 bulan, kepatuhan PM, matriks risiko 5×5, biaya per kategori, daftar perhatian manajemen. **Semua bisa diklik** ke data di baliknya. |
 | Register Aset | Skor kesehatan 0–100 (7 komponen berbobot), kondisi, kekritisan (5 dampak), skor risiko & prioritas otomatis, umur/sisa umur, tab Aset kritis / Perlu perhatian / Mendesak, pengelompokan per departemen/kategori/lokasi/kondisi |
 | QR Asset ID | Token acak per aset, halaman HP publik (identitas, kesehatan, status) dengan formulir lapor kerusakan + foto, label A4 siap cetak (satuan atau massal), buat ulang QR |
@@ -63,7 +65,7 @@ php artisan migrate --seed      # ASSET_DEMO=true dan ASSET_ADMIN_* untuk data c
 php artisan serve
 ```
 
-Buka `http://localhost:8000/app` (pengguna) atau `/platform` (admin platform). Data contoh ada di `/app/gpch`; akun dan kata sandi lihat [PANDUAN-CPANEL.md](PANDUAN-CPANEL.md#situs-demo--promosi).
+Buka `http://localhost:8000/app` (pengguna) atau `/platform` (admin platform). Data contoh ada di `/app/sahid`, `/app/bluebird`, dan `/app/diamond`; akun dan kata sandi lihat [PANDUAN-CPANEL.md](PANDUAN-CPANEL.md#situs-demo--promosi).
 
 Uji otomatis: `php artisan test` (SQLite) atau dengan MySQL: `DB_CONNECTION=mysql DB_DATABASE=... php artisan test`. 15 tes: rumus skor, isolasi antarperusahaan, alur permintaan → work order, status WO, PM, identifikasi awal, QR publik dan label, serta semua halaman untuk setiap peran.
 
@@ -76,8 +78,8 @@ Lihat [PANDUAN-CPANEL.md](PANDUAN-CPANEL.md).
 | Perintah | Fungsi |
 |---|---|
 | `prima:create-admin email "Nama" --password=...` | Buat admin platform |
-| `prima:demo` | Muat data contoh Grand Pasundan Convention Hotel |
-| `prima:remove-demo` | Hapus data contoh |
+| `prima:demo` | Muat data contoh Hotel Sahid, Blue Bird, dan Diamond Food |
+| `prima:remove-demo` | Hapus seluruh perusahaan contoh |
 | `prima:doctor` | Periksa kesiapan server (termasuk APP_URL untuk QR) |
 | `prima:summary` | Ringkasan aset dan PM terlambat per perusahaan |
 

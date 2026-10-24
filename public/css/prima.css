@@ -128,52 +128,47 @@
     .rac-kpi strong { font-size: 1.1rem; }
 }
 
-/* Halaman login: panel merek bergaris tegas di kiri, formulir di kanan. */
-.fi-simple-layout:has(.rac-auth-hero) { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; align-items: stretch; justify-content: stretch; background: #eef2f6; }
-.dark .fi-simple-layout:has(.rac-auth-hero) { background: #0d1520; }
+/* Halaman login: panel merek terang dan tenang di kiri, formulir di kanan. Hanya CSS, tanpa gambar atau font tambahan. */
+.fi-simple-layout:has(.rac-auth-hero) { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; align-items: stretch; justify-content: stretch; background: #ffffff; }
+.dark .fi-simple-layout:has(.rac-auth-hero) { background: #0f141a; }
 .fi-simple-layout:has(.rac-auth-hero) .fi-simple-main-ctn { display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
-.fi-simple-layout:has(.rac-auth-hero) .fi-simple-main { width: 100%; max-width: 440px; margin: 0; border-radius: 14px; border-top: 6px solid var(--rac-gold); position: relative; z-index: 2; box-shadow: 0 18px 45px #0b3a5c26, 0 2px 6px #0b3a5c14; }
+.fi-simple-layout:has(.rac-auth-hero) .fi-simple-main { width: 100%; max-width: 420px; margin: 0; border-radius: 16px; position: relative; z-index: 2; box-shadow: 0 1px 2px #0b3a5c0f, 0 12px 40px #0b3a5c14; border: 1px solid #e9edf1; }
+.dark .fi-simple-layout:has(.rac-auth-hero) .fi-simple-main { border-color: #ffffff14; }
+.fi-simple-layout:has(.rac-auth-hero) .fi-simple-main::before { content: ""; position: absolute; top: -1px; left: 28px; right: 28px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--rac-gold), transparent); }
 .fi-simple-layout:has(.rac-auth-hero) .fi-simple-main .fi-logo { display: none; }
 
-.rac-auth-hero { position: relative; overflow: hidden; background: var(--rac-navy); color: #fff; padding: 48px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
-.rac-auth-hero > *:not(.rac-auth-stripes) { position: relative; z-index: 1; }
-.rac-auth-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.15rem; letter-spacing: .01em; }
-.rac-auth-brand img { width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 0 0 2px #ffffff30; }
-.rac-auth-copy { max-width: 440px; }
-.rac-auth-eyebrow { margin: 0 0 12px; color: var(--rac-gold); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.rac-auth-copy h2 { margin: 0 0 24px; font-size: 2.6rem; line-height: 1.12; font-weight: 800; }
-.rac-auth-copy ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.rac-auth-copy li { display: flex; align-items: center; gap: 12px; font-size: 1rem; color: #dbe7f1; }
-.rac-auth-copy li::before { content: ""; width: 22px; height: 6px; border-radius: 3px; background: var(--rac-gold); flex: none; }
-.rac-auth-foot { margin: 0; font-size: .8rem; color: #9fb6c9; }
+.rac-auth-hero { position: relative; overflow: hidden; background: #f7f5f0; color: var(--rac-navy); padding: 48px 64px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; border-right: 1px solid #ebe6dc; }
+.dark .rac-auth-hero { background: #131a22; color: #e6edf3; border-right-color: #ffffff12; }
+.rac-auth-hero > *:not(.rac-auth-lines) { position: relative; z-index: 1; }
+.rac-auth-brand { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; letter-spacing: .02em; font-weight: 500; }
+.rac-auth-brand b { font-weight: 800; letter-spacing: .08em; }
+.rac-auth-brand img { width: 36px; height: 36px; border-radius: 9px; }
+.rac-auth-copy { max-width: 460px; }
+.rac-auth-eyebrow { margin: 0 0 18px; color: #9a7531; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.dark .rac-auth-eyebrow { color: var(--rac-gold); }
+.rac-auth-copy h2 { margin: 0 0 16px; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: 2.55rem; line-height: 1.15; font-weight: 500; letter-spacing: -.01em; }
+.rac-auth-lead { margin: 0 0 30px; font-size: .98rem; line-height: 1.65; color: #4f6273; max-width: 400px; }
+.dark .rac-auth-lead { color: #9fb0bf; }
+.rac-auth-copy ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.rac-auth-copy li { display: flex; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid #e3ddd0; font-size: .9rem; color: #2c3e4f; }
+.dark .rac-auth-copy li { border-top-color: #ffffff1a; color: #cdd8e2; }
+.rac-auth-copy li span { font-size: .7rem; font-weight: 600; color: #9a7531; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+.rac-auth-foot { margin: 0; font-size: .76rem; color: #8a96a1; letter-spacing: .02em; }
 
-/* Garis diagonal tegas: emas, biru, dan putih tipis di atas dasar navy. */
-.rac-auth-stripes { position: absolute; inset: 0; pointer-events: none; background:
-    linear-gradient(118deg,
-        transparent 0 62%,
-        var(--rac-gold) 62% 66.5%,
-        transparent 66.5% 69%,
-        #2a6ea6 69% 78%,
-        transparent 78% 80.5%,
-        #ffffff 80.5% 81.5%,
-        transparent 81.5% 84%,
-        #14558a 84% 100%); }
+/* Garis halus: kisi tipis dan busur konsentris samar di pojok kanan bawah. */
+.rac-auth-lines { position: absolute; inset: 0; pointer-events: none; background:
+    radial-gradient(circle at 105% 108%, transparent 0 160px, #c9963e33 160px 161px, transparent 161px 220px, #0b3a5c14 220px 221px, transparent 221px 280px, #0b3a5c0f 280px 281px, transparent 281px 340px, #0b3a5c0a 340px 341px, transparent 341px),
+    repeating-linear-gradient(90deg, #0b3a5c07 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(0deg, #0b3a5c07 0 1px, transparent 1px 56px); }
+.dark .rac-auth-lines { opacity: .5; filter: invert(1); }
 
 @media (max-width: 900px) {
-    .fi-simple-layout:has(.rac-auth-hero) { grid-template-columns: 1fr; align-content: start; }
-    .rac-auth-hero { padding: 24px; gap: 0; min-height: 132px; }
-    .rac-auth-copy, .rac-auth-foot { display: none; }
-    .rac-auth-stripes { background:
-        linear-gradient(118deg,
-            transparent 0 64%,
-            var(--rac-gold) 64% 69%,
-            transparent 69% 72%,
-            #2a6ea6 72% 82%,
-            transparent 82% 85%,
-            #ffffff 85% 86.5%,
-            transparent 86.5% 89%,
-            #14558a 89% 100%); }
-    .fi-simple-layout:has(.rac-auth-hero) .fi-simple-main-ctn { align-items: flex-start; padding: 24px 16px 40px; margin-top: -36px; }
+    .fi-simple-layout:has(.rac-auth-hero) { grid-template-columns: 1fr; align-content: start; background: #f7f5f0; }
+    .dark .fi-simple-layout:has(.rac-auth-hero) { background: #131a22; }
+    .rac-auth-hero { padding: 28px 24px 16px; gap: 0; border-right: 0; background: transparent; }
+    .rac-auth-copy, .rac-auth-foot, .rac-auth-lines { display: none; }
+    .rac-auth-brand { justify-content: center; }
+    .fi-simple-layout:has(.rac-auth-hero) .fi-simple-main-ctn { align-items: flex-start; padding: 8px 16px 40px; }
 }
 
 /* Bagian umum: daftar agenda, chip status, jadwal ruang mingguan. */
@@ -217,3 +212,94 @@
 .rac-slot b { display: block; font-size: .72rem; }
 .rac-slot span { display: block; font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .rac-slot:hover { filter: brightness(.96); }
+
+/* Dasbor Pimpinan */
+.rac-lead a { color: inherit; }
+.rac-lead .rac-header p a { color: var(--rac-gold); font-weight: 600; }
+.rac-lead-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; background: var(--rac-card); border-radius: 14px; padding: 20px 24px; box-shadow: 0 1px 6px #0000000f; margin-bottom: 16px; }
+.rac-lead-score { display: flex; gap: 20px; align-items: center; }
+.rac-lead-score .ring { --c: var(--rac-good); flex: none; width: 128px; height: 128px; border-radius: 50%; background: conic-gradient(var(--c) 0 var(--pct), var(--rac-track) var(--pct) 100%); display: grid; place-items: center; }
+.rac-lead-score.warning .ring { --c: var(--rac-mid); }
+.rac-lead-score.danger .ring { --c: var(--rac-bad); }
+.rac-lead-score .ring > div { width: 100px; height: 100px; border-radius: 50%; background: var(--rac-card); display: grid; place-content: center; text-align: center; }
+.rac-lead-score .ring strong { font-size: 1.9rem; line-height: 1; }
+.rac-lead-score .ring span { font-size: .7rem; color: var(--rac-muted); }
+.rac-lead-score h2 { font-size: 1.1rem; font-weight: 700; margin: 0 0 6px; }
+.rac-lead-score p { font-size: .85rem; color: var(--rac-muted); margin: 0; line-height: 1.5; }
+.rac-lead-parts { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.rac-lead-parts .part { display: grid; grid-template-columns: 190px 1fr 44px; gap: 10px; align-items: center; font-size: .8rem; }
+.rac-lead-parts .track { height: 8px; background: var(--rac-track); border-radius: 8px; overflow: hidden; }
+.rac-lead-parts .fill { height: 100%; border-radius: 8px; background: var(--rac-good); }
+.rac-lead-parts .fill.warning { background: var(--rac-mid); }
+.rac-lead-parts .fill.danger { background: var(--rac-bad); }
+.rac-lead-parts b { text-align: right; }
+.rac-lead-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; margin-bottom: 16px; }
+.rac-decision { display: grid; grid-template-columns: 112px 1fr auto; gap: 12px; align-items: center; padding: 10px 4px; border-bottom: 1px solid var(--rac-line); font-size: .85rem; }
+.rac-decision:last-child { border-bottom: 0; }
+.rac-decision:hover { background: var(--rac-track); }
+.rac-decision strong { white-space: nowrap; }
+.rac-chip.info { background: #e3f2fd; color: #1565c0; }
+.rac-chip.danger { background: #ffebee; color: var(--rac-bad); }
+.rac-insights { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.rac-insights li { position: relative; padding: 2px 0 2px 18px; font-size: .85rem; line-height: 1.5; }
+.rac-insights li::before { content: ''; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: #2a78d6; }
+.rac-insights li.good::before { background: var(--rac-good); }
+.rac-insights li.warning::before { background: var(--rac-mid); }
+.rac-insights li.danger::before { background: var(--rac-bad); }
+.rac-lead-charts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.rac-lead-charts > * { min-width: 0; }
+.rac-lead-charts .span-2 { grid-column: span 2; }
+.rac-lead-charts .span-full { grid-column: 1 / -1; }
+.rac-lead-charts .rac-panel { min-height: 0; }
+.rac-lead-foot { margin-top: 14px; }
+.rac-lead-foot a { color: var(--rac-gold); }
+@media (max-width: 1100px) {
+    .rac-lead-hero, .rac-lead-split { grid-template-columns: 1fr; }
+    .rac-lead-charts { grid-template-columns: 1fr; }
+    .rac-lead-charts .span-2 { grid-column: auto; }
+}
+@media (max-width: 520px) {
+    .rac-lead-score { flex-direction: column; text-align: center; }
+    .rac-lead-parts .part { grid-template-columns: 1fr 70px 36px; }
+    .rac-decision { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* Halaman Mengapa Ruci PRIMA */
+.rac-why { color: var(--rac-text); max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.rac-why h1 { font-size: 1.75rem; line-height: 1.25; font-weight: 700; margin: 8px 0 12px; max-width: 760px; }
+.rac-why h2 { font-size: 1.1rem; font-weight: 700; margin: 0 0 14px; }
+.rac-why h3 { font-size: .95rem; font-weight: 700; margin: 0 0 8px; }
+.rac-why p { line-height: 1.6; }
+.rac-why-hero { background: var(--rac-card); border-radius: 16px; padding: 30px 32px; box-shadow: 0 1px 6px #0000000f; border-top: 4px solid var(--rac-gold); }
+.rac-why-hero p { color: var(--rac-muted); max-width: 780px; margin: 0 0 18px; }
+.rac-why-cta { display: inline-block; background: var(--rac-navy); color: #fff !important; padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: .9rem; }
+.rac-why-block { background: var(--rac-card); border-radius: 14px; padding: 22px 24px; box-shadow: 0 1px 6px #0000000f; }
+.rac-why-facts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.rac-why-facts div { border-left: 3px solid var(--rac-gold); padding: 4px 0 4px 12px; }
+.rac-why-facts strong { display: block; font-size: 1.3rem; }
+.rac-why-facts span { font-size: .78rem; color: var(--rac-muted); line-height: 1.4; display: block; }
+.rac-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.rac-why-grid article, .rac-why-roles article, .rac-why-steps article { background: var(--rac-track); border-radius: 10px; padding: 14px 16px; }
+.rac-why-grid article p, .rac-why-steps article p { font-size: .84rem; color: var(--rac-muted); margin: 6px 0 0; }
+.rac-why-grid b { font-size: .9rem; }
+.rac-why-grid.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.rac-why-roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.rac-why-roles ul, .rac-why-list { margin: 0; padding-left: 18px; font-size: .85rem; line-height: 1.6; list-style: disc; }
+.rac-why-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+.rac-why-table th { text-align: left; font-size: .75rem; color: var(--rac-muted); font-weight: 600; padding: 8px; border-bottom: 1px solid var(--rac-line); }
+.rac-why-table td { padding: 10px 8px; border-bottom: 1px solid var(--rac-line); vertical-align: top; }
+.rac-why-table td:first-child { font-weight: 600; white-space: nowrap; }
+.rac-why-note { margin: 14px 0 0; font-size: .82rem; color: var(--rac-muted); background: var(--rac-track); border-radius: 10px; padding: 10px 14px; }
+.rac-why-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.rac-why-steps span { display: block; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--rac-gold); font-weight: 700; margin-bottom: 4px; }
+@media (max-width: 1100px) {
+    .rac-why-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rac-why-roles, .rac-why-steps { grid-template-columns: 1fr; }
+    .rac-why-grid.five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rac-why-table { display: block; overflow-x: auto; }
+}
+@media (max-width: 520px) {
+    .rac-why h1 { font-size: 1.35rem; }
+    .rac-why-hero, .rac-why-block { padding: 18px 16px; }
+    .rac-why-facts, .rac-why-grid.five { grid-template-columns: 1fr; }
+}

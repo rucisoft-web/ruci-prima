@@ -20,12 +20,13 @@ class DatabaseSeeder extends Seeder
         }
 
         if (config('asset.demo.enabled')) {
-            $this->call([DemoSeeder::class, GeneralAffairsDemoSeeder::class]);
+            $this->call(DemoSeeder::class);
 
             if ($email) {
                 // Admin platform juga bisa membuka data contoh sebagai manajer.
-                $company = \App\Models\Company::where('slug', 'gpch')->first();
-                User::where('email', $email)->first()?->memberships()->firstOrCreate(['company_id' => $company->id], ['role' => 'manajer', 'is_active' => true]);
+                foreach (\App\Models\Company::whereIn('slug', DemoSeeder::SLUGS)->get() as $company) {
+                    User::where('email', $email)->first()?->memberships()->firstOrCreate(['company_id' => $company->id], ['role' => 'manajer', 'is_active' => true]);
+                }
             }
         }
     }
