@@ -44,6 +44,10 @@ Modul aset dibangun ulang dari modul Odoo 18 **GPCH Asset Care** (`gpch_asset_ca
 - Halaman **Fitur Utama** publik di `/fitur`; di dalam aplikasi, menu **Panduan & Informasi** berisi Kenapa Perlu Ruci PRIMA (masalah → solusi), Panduan Penggunaan per peran (dengan gambar layar), dan Fitur Utama.
 - Gambar layar panduan ada di `public/img/panduan/*.webp`; bila sebuah berkas tidak ada, halaman menampilkan placeholder. Untuk membuat ulang: `node scripts/panduan-shots.cjs <url> <id-kendaraan> <id-work-order> <token-qr>` (perlu Playwright dan data contoh), lalu konversi PNG ke WebP.
 
+### Logo
+
+Berkas logo ada di `public/brand/`: simbol (`ruci-prima-mark.svg`), logo mendatar dengan tagline (`ruci-prima-logo.svg`, versi gelap `-dark`), versi ringkas (`-simple`), versi bertumpuk (`-stacked`), dan PNG siap pakai. Simbolnya huruf P dengan titik emas; warna navy `#0b3a5c` dan emas `#c9963e`. Dibuat ulang dengan `python3 scripts/brand-logo.py public/brand`.
+
 ### Peran (per perusahaan)
 
 | Peran | Setara Odoo | Hak |

@@ -7,11 +7,12 @@
     <title>Fitur Utama · Ruci PRIMA</title>
     <meta name="description" content="Ruci PRIMA: pengelolaan ruang, inventaris, mobilitas, dan administrasi untuk komisaris, direksi, dan kepala bagian umum.">
     <link rel="icon" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/prima.css') }}?v={{ @filemtime(public_path('css/prima.css')) }}">
 </head>
 <body class="rp-page">
     <header class="rp-top">
-        <a class="rp-brand" href="{{ route('features') }}"><img src="{{ asset('favicon.svg') }}" alt=""> Ruci <b>PRIMA</b></a>
+        <a class="rp-brand" href="{{ route('features') }}"><img src="{{ asset('brand/ruci-prima-logo-simple.svg') }}" alt="Ruci PRIMA"></a>
         <nav class="rp-nav" aria-label="Bagian halaman">
             <a href="#fitur">Fitur</a>
             <a href="#peran">Untuk siapa</a>

@@ -511,3 +511,11 @@
     .rp-tabs a { padding: 7px 12px; font-size: .82rem; }
 }
 .rp-guide-who ul, .rp-role ul, .rp-sector ul, .rp-guide-tips { list-style: disc; }
+
+/* Logo Ruci PRIMA */
+.rac-auth-brand img { width: auto; border-radius: 0; }
+.rac-auth-brand .rac-logo-light, .rac-auth-brand .rac-logo-dark { height: 48px; }
+.rac-auth-brand .rac-logo-dark, .dark .rac-auth-brand .rac-logo-light { display: none; }
+.dark .rac-auth-brand .rac-logo-dark { display: block; }
+.rp-brand img { width: auto; height: 32px; border-radius: 0; }
+@media (max-width: 960px) { .rac-auth-brand .rac-logo-light, .rac-auth-brand .rac-logo-dark { height: 40px; } }

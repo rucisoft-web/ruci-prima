@@ -31,6 +31,9 @@ class PlatformPanelProvider extends PanelProvider
             ->login()
             ->brandName('Ruci PRIMA · Admin Platform')
             ->favicon(asset('favicon.svg'))
+            ->brandLogo(asset('brand/ruci-prima-logo-simple.svg'))
+            ->darkModeBrandLogo(asset('brand/ruci-prima-logo-simple-dark.svg'))
+            ->brandLogoHeight('2rem')
             ->colors(['primary' => Color::Slate])
             ->multiFactorAuthentication(
                 [AppAuthentication::make()->recoverable()],

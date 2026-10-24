@@ -44,6 +44,9 @@ class AppPanelProvider extends PanelProvider
             ->profile(EditProfile::class)
             ->brandName('Ruci PRIMA')
             ->favicon(asset('favicon.svg'))
+            ->brandLogo(asset('brand/ruci-prima-logo-simple.svg'))
+            ->darkModeBrandLogo(asset('brand/ruci-prima-logo-simple-dark.svg'))
+            ->brandLogoHeight('2rem')
             ->colors([
                 // Biru dongker khas Ruci PRIMA; 600 dipakai tombol utama.
                 'primary' => [

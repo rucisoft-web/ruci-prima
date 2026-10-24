@@ -1,8 +1,8 @@
 {{-- Panel merek di sisi kiri halaman login (hanya untuk tamu). Ringan: tanpa gambar, hanya CSS. --}}
 <aside class="rac-auth-hero" aria-hidden="true">
     <div class="rac-auth-brand">
-        <img src="{{ asset('favicon.svg') }}" alt="">
-        <span>Ruci <b>PRIMA</b></span>
+        <img class="rac-logo-light" src="{{ asset('brand/ruci-prima-logo.svg') }}" alt="Ruci PRIMA">
+        <img class="rac-logo-dark" src="{{ asset('brand/ruci-prima-logo-dark.svg') }}" alt="Ruci PRIMA">
     </div>
 
     <div class="rac-auth-copy">
