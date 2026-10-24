@@ -79,4 +79,22 @@ class GuestAccessTest extends TestCase
         $this->get('/app/sahid/panduan-penggunaan?peran=tamu')->assertOk()->assertSee('Masuk sebagai Tamu')->assertSee('rp-shot-placeholder', false);
         $this->get('/app/sahid/kenapa-perlu-ruci-prima')->assertOk()->assertSee('Masalah dan solusinya')->assertSee('Solusi Ruci PRIMA');
     }
+
+    public function test_guest_account_is_created_for_installs_seeded_before_guest_mode(): void
+    {
+        $this->seed(DemoSeeder::class);
+        app(CurrentCompany::class)->set(null);
+        $guest = User::where('email', User::GUEST_EMAIL)->first();
+        $guest->memberships()->delete();
+        $guest->delete();
+
+        $this->get('/app/login')->assertOk()->assertSee('Masuk sebagai Tamu')->assertSee('Diamond Food');
+        $this->assertSame(3, User::where('email', User::GUEST_EMAIL)->first()->memberships()->count());
+        $this->get('/tamu?perusahaan=diamond')->assertRedirect('/app/diamond/dasbor-pimpinan');
+
+        User::where('email', User::GUEST_EMAIL)->update(['is_active' => false]);
+        $this->app['auth']->forgetGuards();
+        $this->flushSession();
+        $this->get('/app/login')->assertOk()->assertDontSee('Masuk sebagai Tamu');
+    }
 }

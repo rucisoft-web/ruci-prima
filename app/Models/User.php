@@ -45,10 +45,28 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
         return $this->email === self::GUEST_EMAIL;
     }
 
-    /** Akun tamu siap dipakai bila data contoh terpasang. */
+    /**
+     * Akun tamu (Eksekutif, hanya baca) untuk setiap perusahaan contoh. Dibuat atau dilengkapi otomatis,
+     * sehingga instalasi lama tidak perlu menjalankan seeder lagi. Tidak ada perusahaan contoh berarti tidak ada tamu;
+     * administrator dapat menonaktifkan akun tamu untuk menyembunyikan tombolnya.
+     */
     public static function guestAccount(): ?self
     {
-        return static::query()->where('email', self::GUEST_EMAIL)->where('is_active', true)->first();
+        $demo = Company::query()->where('is_demo', true)->pluck('id');
+        if ($demo->isEmpty()) {
+            return null;
+        }
+
+        $guest = static::query()->firstOrCreate(['email' => self::GUEST_EMAIL], ['name' => 'Tamu', 'password' => str()->password(40), 'is_active' => true]);
+        if (! $guest->is_active) {
+            return null;
+        }
+
+        foreach ($demo->diff($guest->memberships()->pluck('company_id')) as $companyId) {
+            $guest->memberships()->create(['company_id' => $companyId, 'role' => Role::Eksekutif, 'position_title' => 'Tamu (hanya baca)', 'is_active' => true]);
+        }
+
+        return $guest;
     }
 
     protected function casts(): array
