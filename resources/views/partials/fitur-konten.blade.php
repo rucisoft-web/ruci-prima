@@ -41,15 +41,19 @@
         </ul>
     </section>
 
-    <section class="rp-section" id="tantangan">
-        <h2>Tantangan yang sering dihadapi pimpinan</h2>
-        <div class="rp-grid four">
-            <article><b>Data tersebar</b><p>Aset di Excel, izin di lemari arsip, pemesanan ruang di grup percakapan. Sulit menjawab pertanyaan sederhana dengan cepat.</p></article>
-            <article><b>Biaya reaktif</b><p>Perbaikan menunggu rusak. Biaya darurat, lembur, dan gangguan layanan lebih besar daripada pemeliharaan terjadwal.</p></article>
-            <article><b>Investasi tanpa pembanding</b><p>Usulan CAPEX dibahas tanpa ukuran yang sama, sehingga anggaran tidak selalu jatuh ke kebutuhan paling penting.</p></article>
-            <article><b>Kepatuhan terlewat</b><p>Izin dan sertifikat baru diketahui habis saat inspeksi, audit, atau klaim asuransi.</p></article>
-        </div>
-    </section>
+    @if ($dashboardUrl ?? null)
+        <section class="rp-section" id="tantangan">
+            <h2>Tantangan yang sering dihadapi pimpinan</h2>
+            <div class="rp-grid four">
+                <article><b>Data tersebar</b><p>Aset di Excel, izin di lemari arsip, pemesanan ruang di grup percakapan. Sulit menjawab pertanyaan sederhana dengan cepat.</p></article>
+                <article><b>Biaya reaktif</b><p>Perbaikan menunggu rusak. Biaya darurat, lembur, dan gangguan layanan lebih besar daripada pemeliharaan terjadwal.</p></article>
+                <article><b>Investasi tanpa pembanding</b><p>Usulan CAPEX dibahas tanpa ukuran yang sama, sehingga anggaran tidak selalu jatuh ke kebutuhan paling penting.</p></article>
+                <article><b>Kepatuhan terlewat</b><p>Izin dan sertifikat baru diketahui habis saat inspeksi, audit, atau klaim asuransi.</p></article>
+            </div>
+        </section>
+    @else
+        @include('partials.rucisoft-alur')
+    @endif
 
     <section class="rp-section" id="fitur">
         <h2>Fitur utama</h2>

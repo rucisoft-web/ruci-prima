@@ -4,7 +4,8 @@ use App\Http\Controllers\GuestLoginController;
 use App\Http\Controllers\QrController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/app');
+// Tamu melihat halaman awal; pengguna yang sudah masuk langsung ke aplikasi.
+Route::get('/', fn () => auth()->check() ? redirect('/app') : view('fitur'))->name('home');
 Route::get('/login', fn () => redirect('/app/login'))->name('login');
 
 // Penjelasan fitur untuk calon pengguna, dan pintu masuk tamu ke data contoh.
