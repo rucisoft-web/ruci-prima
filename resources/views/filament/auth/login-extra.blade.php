@@ -26,4 +26,5 @@
     @endif
     <a class="rac-login-learn" href="{{ route('features') }}">Pelajari fitur utama Ruci PRIMA <span aria-hidden="true">→</span></a>
     <p class="rac-login-trust">Terenkripsi · Akses berbasis peran · Jejak audit</p>
+    <p class="rac-login-trust">Produk <a href="https://rucisoft.id" style="color:inherit;text-decoration:underline">Rucisoft</a> · <a href="https://rucisoft.id" style="color:inherit">rucisoft.id</a></p>
 </div>

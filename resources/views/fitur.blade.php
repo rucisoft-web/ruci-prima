@@ -18,6 +18,7 @@
             <a href="#peran">Untuk siapa</a>
             <a href="#sektor">BUMN &amp; swasta</a>
             <a href="#keamanan">Keamanan</a>
+            <a href="https://rucisoft.id">Rucisoft.id</a>
         </nav>
         <div class="rp-top-actions">
             @if ($guestUrl)
@@ -29,6 +30,6 @@
     <main class="rp-main">
         @include('partials.fitur-konten', ['guestUrl' => $guestUrl])
     </main>
-    <footer class="rp-foot">&copy; {{ date('Y') }} Rucisoft · Ruci PRIMA · Pengelolaan Ruang, Inventaris, Mobilitas &amp; Administrasi</footer>
+    <footer class="rp-foot">&copy; {{ date('Y') }} <a href="https://rucisoft.id" style="color:inherit;text-decoration:underline">Rucisoft</a> · Ruci PRIMA · Pengelolaan Ruang, Inventaris, Mobilitas &amp; Administrasi</footer>
 </body>
 </html>
